@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thư Mời Lễ Tốt Nghiệp - Nguyễn Ngọc Tuyền</title>
+  
+  <!-- Google Fonts: Đầy đủ font Việt hóa nghệ thuật -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Canvas Pháo hoa giấy (Confetti) -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Đốm sáng ấm áp trôi lững lờ ở nền -->
+  <div class="ambient-lights">
+    <span class="light-dot"></span>
+    <span class="light-dot"></span>
+    <span class="light-dot"></span>
+    <span class="light-dot"></span>
+    <span class="light-dot"></span>
+    <span class="light-dot"></span>
+  </div>
+
+  <!-- Container tổng -->
+  <main class="scene-container">
+    
+    <!-- Lời nhắc mở thiệp -->
+    <div class="envelope-hint" id="envelopeHint">
+      <span class="hint-sparkle">✨</span>
+      <span class="hint-text">Chạm vào phong bì để mở thư mời</span>
+      <span class="hint-sparkle">✨</span>
+    </div>
+
+    <!-- KHÔNG GIAN THIỆP MỜI (STAGE) -->
+    <div class="card-stage" id="cardStage">
+      
+      <!-- ===================================================================
+           1. PHONG BÌ BÌA MÀU ĐỎ (ENVELOPE)
+           =================================================================== -->
+      <div class="envelope-container" id="envelopeContainer">
+        <div class="envelope" id="envelope" title="Bấm để mở thư mời">
+          
+          <!-- Lớp nền phía trong phong bì -->
+          <div class="env-back"></div>
+
+          <!-- Mép giấy thư hơi nhô lên tạo cảm giác bên trong có thư -->
+          <div class="env-paper-peek">
+            <div class="peek-line"></div>
+            <div class="peek-line"></div>
+          </div>
+
+          <!-- Nắp trên phong bì (Flap) với hiệu ứng lật mở 3D -->
+          <div class="env-flap-top" id="envelopeFlap"></div>
+
+          <!-- Các cánh gập túi phong bì trước (Pocket) -->
+          <div class="env-flap-left"></div>
+          <div class="env-flap-right"></div>
+          <div class="env-flap-bottom"></div>
+          <!-- Con dấu sáp vàng nguyên khối (Wax Seal) -->
+          <div class="wax-seal" id="waxSeal">
+            <div class="seal-inner">
+              <span class="seal-logo">NT</span>
+              <span class="seal-star">★</span>
+            </div>
+            <div class="seal-glow"></div>
+          </div>
+
+        </div> <!-- Kết thúc envelope -->
+
+        <!-- Nhãn tiêu đề trang trọng tách rời ở DƯỚI HẲN phong bì thư -->
+        <div class="envelope-caption-badge" id="envBadge" title="Bấm để mở thư mời">
+          <span class="badge-sub-title">GRADUATION INVITATION</span>
+          <h2 class="badge-student-name">Nguyễn Ngọc Tuyền</h2>
+          <span class="badge-year-tag">2026</span>
+        </div>
+
+      </div> <!-- Kết thúc envelope-container -->
+
+      <!-- ===================================================================
+           2. NỘI DUNG LÁ THƯ (LETTER CARD) - GIẤY Ô LY NÂU NHẠT
+           =================================================================== -->
+      <article class="letter-card" id="letterCard">
+        
+        <!-- Băng dính Washi Tape trang trí dán trên đầu -->
+        <div class="washi-tape"></div>
+
+        <!-- CÁC HÌNH ẢNH STICKER CUTE TỪ FOLDER DECOR -->
+        <img src="decor/sun.png" alt="Mặt trời cute" class="decor-sticker sticker-sun" />
+        <img src="decor/paper-plane.png" alt="Máy bay giấy cute" class="decor-sticker sticker-plane" />
+        <img src="decor/book.png" alt="Sách tri thức cute" class="decor-sticker sticker-book" />
+        <img src="decor/rabbit.png" alt="Thỏ cảm ơn cute" class="decor-sticker sticker-rabbit" />
+
+        <!-- NỘI DUNG CHÍNH (BỐ CỤC 2 CỘT) -->
+        <div class="letter-inner-content">
+          
+          <!-- CỘT TRÁI: ẢNH ĐẠI DIỆN + TÊN + LỜI NGỎ -->
+          <section class="letter-left-col">
+            <header class="letter-heading">
+              <span class="sub-greeting">Kính mời Bạn & Người thân đến dự</span>
+              <h1 class="main-title">Happy Graduation</h1>
+              <div class="title-divider">
+                <span class="divider-line"></span>
+                <span class="divider-icon">🎓</span>
+                <span class="divider-line"></span>
+              </div>
+            </header>
+
+            <!-- Khung ảnh chân dung Polaroid có ghim vàng -->
+            <div class="polaroid-frame">
+              <div class="photo-pin"></div>
+              <div class="photo-container">
+                <img src="anh_dai_dien.jpg" alt="Cử nhân Nguyễn Ngọc Tuyền" class="profile-photo" />
+              </div>
+              <div class="polaroid-caption">
+                <h2 class="candidate-name">Nguyễn Ngọc Tuyền</h2>
+                <p class="candidate-title">Lễ Trao Bằng Tốt Nghiệp</p>
+              </div>
+            </div>
+
+            <!-- Lời nhắn chân thành -->
+            <div class="letter-message-box">
+              <p class="quote-text">
+                "Thanh xuân dưới mái trường đã hoàn thành trọn vẹn với biết bao kỷ niệm đẹp. 
+                Sự hiện diện và lời chúc của bạn sẽ là món quà vô giá nhất đối với Tuyền trong ngày trọng đại này!"
+              </p>
+              <div class="contact-pill">
+                <span class="contact-icon">📱</span>
+                <span class="contact-number">Liên hệ Tuyền: <a href="tel:0854422289" style="color: inherit; text-decoration: none;"><strong>0854422289</strong></a></span>
+              </div>
+            </div>
+          </section>
+
+          <!-- ĐƯỜNG PHÂN CÁCH TRANG TRÍ GIỮA 2 CỘT -->
+          <div class="col-separator"></div>
+
+          <!-- CỘT PHẢI: NGÀY GIỜ, LỊCH TRÌNH & ĐỊA ĐIỂM -->
+          <section class="letter-right-col">
+            
+            <!-- Hộp ngày tổ chức nổi bật -->
+            <div class="date-highlight-card">
+              <span class="day-of-week">THỨ BA</span>
+              <div class="date-row">
+                <span class="date-number">29</span>
+                <div class="date-details">
+                  <span class="date-month">THÁNG 09</span>
+                  <span class="date-year">NĂM 2026</span>
+                </div>
+              </div>
+              <span class="date-tag">Lễ Trao Bằng</span>
+            </div>
+
+            <!-- Lịch trình chi tiết (Timeline) -->
+            <div class="timeline-section">
+              <h3 class="section-title">Timeline Chương Trình</h3>
+              
+              <ul class="timeline-list">
+                <li class="timeline-item">
+                  <div class="timeline-marker">
+                    <span class="marker-dot"></span>
+                    <span class="marker-time">08:30 - 09:50</span>
+                  </div>
+                  <div class="timeline-content">
+                    <h4>Lễ Khai Mạc Tốt Nghiệp</h4>
+                    <p>Nghi lễ trang trọng tại hội trường cùng ban giám hiệu nhà trường và quý thầy cô.</p>
+                  </div>
+                </li>
+
+                <li class="timeline-item">
+                  <div class="timeline-marker">
+                    <span class="marker-dot"></span>
+                    <span class="marker-time">09:50 - 10:25</span>
+                  </div>
+                  <div class="timeline-content">
+                    <h4>Trao Bằng Tốt Nghiệp</h4>
+                    <p>Khoảnh khắc vinh danh và trao tấm bằng cử nhân tốt nghiệp.</p>
+                  </div>
+                </li>
+
+                <li class="timeline-item">
+                  <div class="timeline-marker">
+                    <span class="marker-dot"></span>
+                    <span class="marker-time">10:25 - 12:00</span>
+                  </div>
+                  <div class="timeline-content">
+                    <h4>Chụp ảnh cùng Gia đình & Bạn bè</h4>
+                    <p>Ghi lại những khoảnh khắc ấm áp, rực rỡ và tươi vui nhất của thanh xuân.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Khối thông tin địa điểm -->
+            <div class="location-card">
+              <div class="loc-header">
+                <span class="loc-icon">📍</span>
+                <span class="loc-label">Địa điểm tổ chức:</span>
+              </div>
+              <h4 class="loc-place">Hội trường, tầng 2 tòa 14 tầng</h4>
+              <p class="loc-facility">Học viện Kỹ thuật Mật mã</p>
+              <p class="loc-address">141 Chiến Thắng, Tân Triều, Thanh Trì, Hà Nội</p>
+              
+              <div class="loc-actions">
+                <a href="https://maps.google.com/?q=Học+viện+Kỹ+thuật+Mật+mã+141+Chiến+Thắng" target="_blank" rel="noopener noreferrer" class="btn-action btn-map">
+                  <span>🗺️ Mở Google Maps</span>
+                </a>
+                <button id="copyAddressBtn" class="btn-action btn-copy">
+                  <span>📋 Sao chép địa chỉ</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Lời cảm ơn chân thành -->
+            <div class="thank-you-banner">
+              <span class="thank-text">Rất mong được đón tiếp bạn với tất cả sự yêu thương! ❤️</span>
+            </div>
+
+          </section>
+        </div> <!-- Kết thúc letter-inner-content -->
+
+        <!-- Nút gập lại thư vào phong bì -->
+        <footer class="letter-footer-bar">
+          <button id="closeLetterBtn" class="btn-close-letter" title="Gấp lại phong bì thư">
+            <span class="close-icon">✉️</span>
+            <span>Gấp lại thiệp mời</span>
+          </button>
+        </footer>
+
+      </article> <!-- Kết thúc letter-card -->
+
+    </div> <!-- Kết thúc card-stage -->
+
+  </main>
+
+  <!-- Hộp thông báo nhỏ (Toast) khi copy thành công -->
+  <div id="toastMessage" class="toast-message">Đã sao chép địa chỉ vào bộ nhớ tạm!</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
